@@ -2,7 +2,7 @@
 
 These containers manage a secure password storage system using Vaultwarden. The "vaultwarden" container functions as the main server for password storage and access, while the "vaultwarden-backup" container ensures regular backups of this data, maintaining its security and integrity.
 
-```
+```yaml
 version: '3'
 
 services:

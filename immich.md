@@ -1,6 +1,6 @@
 # Immich
 
-```
+```yaml
 version: "3.8"
 name: immich
 
