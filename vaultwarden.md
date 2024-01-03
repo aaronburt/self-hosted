@@ -9,11 +9,24 @@ services:
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
+    user: 1000:1000
     restart: always
     volumes:
       - ./vw-data/:/data/
     ports:
       - 8080:80
+    environment: 
+      - SMTP_HOST= #smtp server
+      - SMTP_FROM= #email
+      - SMTP_PORT= #smtp port
+      - SMTP_SECURITY= #force_ssl or starttls or off
+      - SMTP_USERNAME= # email 
+      - SMTP_PASSWORD= # email password
+      - SIGNUPS_ALLOWED=false
+      - SHOW_PASSWORD_HINT=true
+      - ADMIN_TOKEN= #ARGON2 use $$ to string escape 
+
+      # echo -n "secretPasswordForAdminToken" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4
 
   vaultwarden-backup:
     image: bruceforce/vaultwarden-backup
